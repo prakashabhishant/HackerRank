@@ -1,0 +1,45 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the bigSorting function below.
+def bigSorting(unsorted):
+    unsorted.sort(key=int)
+    return unsorted
+#     arr=[]
+#     arr1=[]
+#     print(unsorted)
+#     for items in unsorted:
+#         arr.append(int(items))
+    
+#     print(arr)
+#     arr.sort()
+#     print(arr)
+    
+#     for items in arr:
+#         arr1.append(str(items))
+#     print(arr1)
+#     return arr1
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    unsorted = []
+
+    for _ in range(n):
+        unsorted_item = input()
+        unsorted.append(unsorted_item)
+
+    result = bigSorting(unsorted)
+
+    fptr.write('\n'.join(result))
+    fptr.write('\n')
+
+    fptr.close()
+

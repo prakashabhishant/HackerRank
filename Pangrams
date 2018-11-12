@@ -1,0 +1,58 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<string.h>
+using namespace std;
+int has[26];
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int i,j,k,l,n,flag=1;
+    char a[1000],ch;
+    
+    cin.get(a,1000);
+    n=strlen(a);
+    for(i=0;i<26;i++)
+        {
+        has[i]=0;
+    }
+    for(i=0;i<n;i++)
+        {
+        ch=a[i];
+        j=ch;
+        //cout<<"j is "<<j<<"\n";
+        if(ch>='A' && ch<='Z')
+            {
+            
+            has[j-65]=1;
+        }
+        
+        if(ch>='a' && ch<='z')
+            {
+            has[j-97]=1;
+        }
+        
+        
+    }
+    for(i=0;i<26;i++)
+        {
+        if(has[i]==0)
+            {
+            flag=0;
+        }
+    }
+        if(flag==1)
+            {
+            cout<<"pangram"<<"\n";
+            
+        }
+    else
+        {
+        cout<<"not pangram"<<"\n";
+    }
+    return 0;
+}
+

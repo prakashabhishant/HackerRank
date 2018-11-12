@@ -1,0 +1,41 @@
+#!/bin/python3
+
+import os
+import sys
+import string
+
+#
+# Complete the timeConversion function below.
+#
+def timeConversion(s):
+    #
+    myList = s.split(":")
+    is_pm = "PM" in s
+    is_am = "AM" in s
+    
+    print(is_pm)
+    
+    if myList[0] == "12" and is_am == True:
+        myList[0] = "00"
+    elif myList[0] == "12" and is_pm == True:
+        myList[0] = "12"
+    elif is_pm == True:
+        myList[0] =  str(int(myList[0]) + 12)
+    
+    myList[2]=''.join(i for i in myList[2] if i.isdigit())
+    mystring = myList[0] + ":" + myList[1] + ":" + myList[2] 
+    
+    return mystring
+    
+
+if __name__ == '__main__':
+    f = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    f.write(result + '\n')
+
+    f.close()
+

@@ -1,0 +1,36 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the compareTriplets function below.
+def compareTriplets(a, b):
+    firstp=0
+    secondp=0
+    mylist=[]
+    for item in range(3):
+        if a[item]>b[item]:
+            firstp+=1
+        elif a[item]<b[item]:
+            secondp+=1
+    mylist.append(firstp)
+    mylist.append(secondp)
+    return mylist
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    a = list(map(int, input().rstrip().split()))
+
+    b = list(map(int, input().rstrip().split()))
+
+    result = compareTriplets(a, b)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+

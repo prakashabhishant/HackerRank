@@ -1,0 +1,37 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the insertionSort1 function below.
+def insertionSort1(n, arr):
+    start = n-2
+    key = arr[n-1]
+    # print(arr)
+    if n == 1 :
+        print(" ".join(str(x) for x in arr))
+    while start >= 0 and n!=1:
+        if arr[start]>key:
+            arr[start+1]=arr[start]
+        elif arr[start] <= key:
+            index = start + 1
+            arr[index] = key
+            print(" ".join(str(x) for x in arr))
+            break
+        print(" ".join(str(x) for x in arr))
+        start -= 1
+    if key < arr[0]:
+        arr[0] = key
+        print(" ".join(str(x) for x in arr))
+        
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort1(n, arr)
+

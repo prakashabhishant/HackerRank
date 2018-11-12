@@ -1,0 +1,52 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the missingNumbers function below.
+def missingNumbers(arr, brr):
+    myList = [0]*1000000
+    
+    myList1=[]
+    for elements in arr:
+        index=int(elements)
+        print(index)
+        myList[index] -= 1
+    
+    
+    for elements in brr:
+        index = int(elements)
+        myList[index] += 1
+    
+    for index in range(0,1000000):
+        if myList[index] > 0:
+            myList1.append(index)
+            
+    print(myList1)       
+    return myList1
+    
+    
+                
+            
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    m = int(input())
+
+    brr = list(map(int, input().rstrip().split()))
+
+    result = missingNumbers(arr, brr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+

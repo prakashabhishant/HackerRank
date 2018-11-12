@@ -1,0 +1,62 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the closestNumbers function below.
+def closestNumbers(arr):
+    arr.sort()
+    length = len(arr)
+    least_difference=int(arr[1])-int(arr[0])
+    index = 1
+    myList=[]
+    
+    if arr.count(arr[0])==len(arr):
+        myList.append(arr[0])*2
+        return myList
+    # myList.append(arr[0])
+    # myList.append(arr[1])
+    while index <= (length-1):
+        if arr[index]-arr[index-1] < least_difference:
+            least_difference=abs(arr[index]-arr[index-1])
+            myList.clear()
+            myList.append(arr[index-1])
+            myList.append(arr[index])
+        elif arr[index]-arr[index-1] == least_difference:
+            myList.append(arr[index-1])
+            myList.append(arr[index])
+        index+=1
+        
+#     index=1
+    
+#     while index <= (length-1):
+#         if int(arr[index])-int(arr[index-1]) == least_difference:
+#             myList.append(arr[index])
+#             myList.append(arr[index-1])
+#         index+=1
+    
+    # myList = list(set(myList))
+    myList.sort()
+    print(myList)
+    
+    return myList
+    
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = closestNumbers(arr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+

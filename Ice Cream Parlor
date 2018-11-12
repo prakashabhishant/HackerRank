@@ -1,0 +1,79 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int a[100000],b[100000],m,n,t;
+
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    cin>>t;
+    int i,j,k,left=0,index1,index2,q,w,right;
+    while(t--)
+        {
+        cin>>m;
+        cin>>n;
+        right=n-1;
+        left=0;
+        for(i=0;i<n;i++)
+            {
+            cin>>a[i];
+            b[i]=a[i];
+        }
+        sort(b,b+n);
+        //for(i=0;i<n;i++)
+          //  {
+          //  cout<<b[i]<<" ";
+       // }
+        while(left<=right)
+            {
+            if( (b[left] + b[right]) > m)
+                {
+                right--;
+                continue;
+            }
+            else if((b[left]+b[right]) < m)
+                {
+                left++;
+                continue;
+         
+            }
+            else if((b[left]+b[right]) == m)
+                {
+               
+                q=b[left];
+                w=b[right];
+                //cout<<"q and w are "<<q<<" "<<w;
+                break;
+            }
+        }
+        for(i=0;i<n;i++)
+            {
+            if(a[i]==q)
+                {
+                index1=i;
+            }
+            if(a[i]==w)
+                {
+                index2=i;
+                if(q==w)
+                    {
+                    index2++;
+                    break;
+                }
+            }
+        }
+        if(index1>index2)
+            {
+            k=index1;
+            index1=index2;
+            index2=k;
+        }
+        cout<<index1+1<<" "<<index2+1<<"\n";
+    }
+    return 0;
+}
+

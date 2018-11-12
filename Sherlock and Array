@@ -1,0 +1,46 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the balancedSums function below.
+def balancedSums(arr):
+    if len(arr)==1:
+        return "YES"
+    sum = 0
+    flag = 0 
+    current_sum = 0
+    for elements in arr:
+        sum += elements
+    
+    for index in range(0,len(arr)-1):
+        if current_sum == (sum - (current_sum + arr[index])):
+            flag = 1
+            break
+        current_sum += arr[index]
+    if flag == 1:
+        return "YES"
+    else:
+        return "NO"
+        
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    T = int(input().strip())
+
+    for T_itr in range(T):
+        n = int(input().strip())
+
+        arr = list(map(int, input().rstrip().split()))
+
+        result = balancedSums(arr)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
+
